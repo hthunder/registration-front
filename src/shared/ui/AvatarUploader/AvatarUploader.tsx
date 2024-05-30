@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import classes from "./AvatarUploader.module.css";
 
 type AvatarUploaderProps = {
@@ -12,9 +12,9 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
   onChange,
   error,
 }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const handleFileInputClick = () => {
-    const fileInput = document.getElementById("avatar") as HTMLInputElement;
-    fileInput.click();
+    inputRef.current?.click();
   };
 
   return (
@@ -24,6 +24,7 @@ export const AvatarUploader: React.FC<AvatarUploaderProps> = ({
         <input
           type="file"
           name="avatar"
+          ref={inputRef}
           id="avatar"
           className={classes.hiddenFileInput}
           onChange={onChange}

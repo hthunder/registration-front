@@ -66,7 +66,8 @@ export const useRegistrationForm = () => {
       const response = await api.register(registrationDto);
 
       if (!response.ok) {
-        throw new Error("Failed to register");
+        const errorData = await response.text();
+        throw new Error(errorData ?? "Failed to register");
       }
 
       setSubmissionMessage("Registration successful!");
