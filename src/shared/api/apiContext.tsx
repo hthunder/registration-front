@@ -2,7 +2,7 @@ import { ApiClient } from "./apiClient.ts";
 import React, { useContext } from "react";
 
 const ApiContext = React.createContext<ApiClient | null>(null);
-const apiClient = new ApiClient("/api");
+const apiClient = new ApiClient("http://localhost:8080/api");
 
 export const ApiProvider = (props: { children: React.ReactNode }) => {
   return (

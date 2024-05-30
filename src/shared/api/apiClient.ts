@@ -1,12 +1,4 @@
-export interface IRegistrationDto {
-  first_name: string;
-  last_name: string;
-  birthday: string;
-  username: string;
-  email: string;
-  password: string;
-  avatar: string;
-}
+import { IRegistrationDto } from "./types.ts";
 
 export class ApiClient {
   constructor(private baseUrl: string) {}

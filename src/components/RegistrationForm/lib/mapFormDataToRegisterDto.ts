@@ -1,5 +1,5 @@
-import { IRegistrationDto } from "../../../shared/api/apiClient.ts";
-import { convertFileToBase64 } from "../../../shared/lib/convertFileToBase64.ts";
+import { type IRegistrationDto } from "../../../shared/api/";
+import { convertFileToBase64 } from "../../../shared/lib/";
 import { IRegistrationFormData } from "../model/types.ts";
 
 export const mapFormDataToRegisterDto = async (
@@ -9,8 +9,8 @@ export const mapFormDataToRegisterDto = async (
 
   return {
     avatar: base64Avatar,
-    first_name: formData.firstName,
-    last_name: formData.lastName,
+    firstName: formData.firstName,
+    lastName: formData.lastName,
     birthday: formData.birthday,
     username: formData.username,
     email: formData.email,

@@ -1,6 +1,5 @@
-import { FormField } from "../../../shared/ui/FormField/FormField.tsx";
+import { AvatarUploader, FormField } from "../../../shared/ui/";
 import { useRegistrationForm } from "../model/useRegistrationForm.ts";
-import { AvatarUploader } from "../../../shared/ui/AvatarUploader/AvatarUploader.tsx";
 import classes from "./RegistrationForm.module.css";
 
 export const RegistrationForm = () => {
@@ -70,7 +69,7 @@ export const RegistrationForm = () => {
         Sign up
       </button>
       {submissionMessage && (
-        <div className={classes.errorMessage}>{submissionMessage}</div>
+        <div className={classes.result}>{submissionMessage}</div>
       )}
     </form>
   );

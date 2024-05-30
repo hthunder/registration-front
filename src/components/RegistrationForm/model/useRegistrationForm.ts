@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useApiContext } from "../../../shared/api/apiContext.tsx";
+import { useApiContext } from "../../../shared/api/";
 import { mapFormDataToRegisterDto } from "../lib/mapFormDataToRegisterDto.ts";
 import { ValidationError, validationRules } from "./validationRules.ts";
 import { IRegistrationFormData } from "./types.ts";
@@ -22,14 +22,16 @@ const validateForm = (formData: IRegistrationFormData): ValidationError => {
 
 export const useRegistrationForm = () => {
   const api = useApiContext();
-  const [formData, setFormData] = useState<IRegistrationFormData>({
+  const initialFormData = {
     firstName: "",
     lastName: "",
     birthday: "",
     username: "",
     email: "",
     password: "",
-  });
+  };
+  const [formData, setFormData] =
+    useState<IRegistrationFormData>(initialFormData);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [submissionMessage, setSubmissionMessage] = useState("");
 
@@ -68,6 +70,7 @@ export const useRegistrationForm = () => {
       }
 
       setSubmissionMessage("Registration successful!");
+      setFormData(initialFormData);
     } catch (error) {
       setSubmissionMessage("Registration failed: " + (error as Error).message);
     }
